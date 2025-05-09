@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>地塊1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8e1;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #d35400;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .word-box {
+      background-color: #f6b93b;
+      color: white;
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 20px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .word-box:hover {
+      background-color: #e67e22;
+    }
+    .link {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .game-btn {
+      background-color: #f8c291;
+      color: white;
+      font-size: 1.2rem;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      text-decoration: none; /* 去除連結的底線 */
+    }
+
+    .game-btn:hover {
+      background-color: #e67e22;
+    }
+
+    .game-btn:focus {
+      outline: none; /* 去除聚焦時的邊框 */
+    }
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fffefc;
+  padding: 16px;
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  width: 90vw;
+  max-width: 400px;
+  min-width: 260px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  box-sizing: border-box;       /* 讓 padding 與 border 不撐爆 */
+  overflow-wrap: break-word;    /* 長句斷行 */
+}
+    .popup h2 {
+      margin-top: 0;
+      color: #d35400;
+      font-size: 2rem;
+    }
+    .example {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+      font-size: 1.2rem;
+    }
+    .play-btn {
+      background-color: #f8c291;
+      border: none;
+      padding: 5px 10px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .close-btn {
+      margin-top: 20px;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>地塊1</h1>
+  <div class="grid" id="wordGrid"></div>
+
+  <div class="popup" id="popup">
+    <h2 id="popupWord"></h2>
+    <p id="popupInfo"></p>
+    <div id="popupExamples"></div>
+    <button class="close-btn" onclick="closePopup()">關閉</button>
+  </div>
+  <div class="link">
+    <a href="games/land1games.html">
+      <button class="game-btn">進入中英配對遊戲</button>
+    </a>
+  </div>
+
+
+
+  <script>
+    const words = [
+      {
+        word: "Argentina",
+        type: "noun",
+        meaning: "阿根廷",
+        examples: [
+          { en: "Argentina is known for its beautiful landscapes.", zh: "阿根廷以其美麗的風景而聞名。" }
+        ]
+      },
+      {
+        word: "charm",
+        type: "noun",
+        meaning: "魅力，吸引力",
+        examples: [
+          { en: "Her charm and beauty captivated everyone in the room.", zh: "她的魅力和美貌吸引了房間裡的每一個人。" }
+        ]
+      },
+      {
+        word: "development",
+        type: "noun",
+        meaning: "發展，開發",
+        examples: [
+          { en: "The development of new technologies is changing the world.", zh: "新技術的發展正在改變世界。" }
+        ]
+      },
+      {
+        word: "fist",
+        type: "noun",
+        meaning: "拳頭",
+        examples: [
+          { en: "He clenched his fist in anger.", zh: "他憤怒地握緊了拳頭。" }
+        ]
+      },
+      {
+        word: "hunger",
+        type: "noun",
+        meaning: "飢餓",
+        examples: [
+          { en: "The children were suffering from hunger in the famine.", zh: "孩子們在饑荒中忍受著飢餓。" }
+        ]
+      },
+      {
+        word: "lost",
+        type: "adjective",
+        meaning: "迷失的，失去的",
+        examples: [
+          { en: "I lost my keys and can't find them anywhere.", zh: "我丟了鑰匙，怎麼也找不到。" }
+        ]
+      },
+      {
+        word: "parrot",
+        type: "noun",
+        meaning: "鸚鵡",
+        examples: [
+          { en: "The parrot imitated everything I said.", zh: "那隻鸚鵡模仿我說的每一句話。" }
+        ]
+      },
+      {
+        word: "rob",
+        type: "verb",
+        meaning: "搶劫，竊取",
+        examples: [
+          { en: "The thief tried to rob the bank but was caught.", zh: "小偷試圖搶劫銀行，但被抓住了。" }
+        ]
+      },
+      {
+        word: "stormy",
+        type: "adjective",
+        meaning: "暴風雨的，暴躁的",
+        examples: [
+          { en: "The stormy weather kept everyone inside.", zh: "暴風雨的天氣讓每個人都待在室內。" }
+        ]
+      },
+      {
+        word: "trace",
+        type: "noun",
+        meaning: "痕跡，蹤跡",
+        examples: [
+          { en: "The police followed the trace of the criminal.", zh: "警方跟蹤了罪犯的痕跡。" }
+        ]
+      }
+    ];
+
+    const wordGrid = document.getElementById("wordGrid");
+    const popup = document.getElementById("popup");
+    const popupWord = document.getElementById("popupWord");
+    const popupInfo = document.getElementById("popupInfo");
+    const popupExamples = document.getElementById("popupExamples");
+
+    words.forEach(item => {
+      const box = document.createElement("div");
+      box.className = "word-box";
+      box.textContent = item.word;
+      box.addEventListener("click", () => {
+        popupWord.textContent = item.word;
+        popupInfo.textContent = `${item.type}：${item.meaning}`;
+        popupExamples.innerHTML = "";
+        item.examples.forEach(ex => {
+          const exDiv = document.createElement("div");
+          exDiv.className = "example";
+          exDiv.innerHTML = `
+            <strong>英文：</strong> ${ex.en}
+            <button class="play-btn">🔈</button><br/>
+            <strong>中文：</strong> ${ex.zh}
+          `;
+          const btn = exDiv.querySelector('.play-btn');
+          btn.addEventListener('click', () => speak(ex.en)); 
+          popupExamples.appendChild(exDiv);
+        });
+        speak(item.word);
+        popup.style.display = "block";
+      });
+      wordGrid.appendChild(box);
+    });
+
+    function closePopup() {
+      popup.style.display = "none";
+    }
+
+    let loadedVoices = [];
+
+    function loadVoices() {
+      loadedVoices = speechSynthesis.getVoices();
+      if (loadedVoices.length === 0) {
+        speechSynthesis.onvoiceschanged = () => {
+          loadedVoices = speechSynthesis.getVoices();
+        };
+      }
+    }
+    loadVoices();
+
+    function speak(text) {
+      if (!text) return;
+
+      const utterance = new SpeechSynthesisUtterance(text);
+
+      const preferredVoice = loadedVoices.find(voice =>
+        voice.name === 'Samantha' || voice.name.includes('Siri') || voice.name.includes('Google US English')
+      ) || loadedVoices.find(voice => voice.lang === 'en-US') || loadedVoices[0];
+
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
+      }
+
+      utterance.lang = 'en-US';
+
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+</body>
+</html>
