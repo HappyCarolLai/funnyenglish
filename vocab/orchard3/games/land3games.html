@@ -200,13 +200,6 @@ document.querySelectorAll('.word').forEach(el => {
   });
 });
 
-// 播放中文意思語音
-document.querySelectorAll('.meaning').forEach(el => {
-  el.addEventListener('click', () => {
-    speakText(el.innerText, 'zh-TW');
-  });
-});
-
 englishCol.addEventListener('click', (e) => {
   if (e.target.closest('.word') && !e.target.closest('.word').classList.contains('matched')) {
     document.querySelectorAll('.word.selected').forEach(el => el.classList.remove('selected'));
