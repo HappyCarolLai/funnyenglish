@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>地塊3配對遊戲</title>
+  <title>地塊1配對遊戲</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -36,7 +36,7 @@
       gap: 10px;
     }
     .word, .meaning {
-      height: 30px;
+      height: 30px; /* 統一高度為 30px */
       line-height: 30px;
       padding: 0 15px;
       border: 2px solid #ffcc80;
@@ -56,14 +56,19 @@
       color: #4e342e;
       font-weight: regular;
     }
+
+    /* 錯誤閃爍提示動畫 */
     .flash {
       animation: flash-bg 1s;
     }
+
     @keyframes flash-bg {
       0%, 100% { background-color: #f6b93b; }
       25%, 75% { background-color: #f44336; }
       50% { background-color: #f6b93b; }
     }
+
+
     .popup {
       display: none;
       position: fixed;
@@ -114,22 +119,18 @@
     .popup button:hover {
       background-color: #f57c00;
     }
-    .word .pos {
-      color: #fff;
-      font-size: 0.9em;
-      margin-left: 4px;
-    }
   </style>
 </head>
 <body>
 
-<h2>💡 地塊3配對遊戲</h2>
+<h2>💡 地塊1配對遊戲</h2>
 
 <div class="columns">
   <div class="column" id="englishColumn"></div>
   <div class="column" id="chineseColumn"></div>
 </div>
 
+<!-- 彈出詞性 + 例句視窗 -->
 <div class="popup" id="popup">
   <span class="close-btn" onclick="closePopup()">×</span>
   <h2><span id="word"></span></h2>
@@ -141,8 +142,10 @@
   </div>
 </div>
 
-<script src="land3games.js"></script>
+<!-- 先引入單元資料 -->
+<script src="land1games.js"></script>
 
+<!-- 再執行主程式 -->
 <script>
 const englishCol = document.getElementById('englishColumn');
 const chineseCol = document.getElementById('chineseColumn');
@@ -161,24 +164,27 @@ function loadVoices() {
 }
 loadVoices();
 
+// 亂序英文和中文，並將它們分開處理
 const shuffledIds = Object.keys(data).sort(() => Math.random() - 0.5);
 
-// 英文單字區（顯示詞性但只發音 baseWord）
+// 英文單字區
 shuffledIds.forEach(id => {
   const entry = data[id];
-  const baseWord = entry.word.replace(/\(.*?\)/g, "").trim();
 
   const wordDiv = document.createElement('div');
   wordDiv.className = 'word';
   wordDiv.dataset.id = id;
-  wordDiv.dataset.pronounce = baseWord;
-  wordDiv.innerHTML = baseWord + '<span class="pos">' + entry.word.replace(baseWord, '') + '</span>';
+  wordDiv.innerText = entry.word;
+  wordDiv.addEventListener('click', () => {
+  const cleanWord = entry.word.replace(/\(.*\)/, '').trim(); // 移除括號內的詞性
+  speakText(cleanWord, 'en-US');
+});
+
   englishCol.appendChild(wordDiv);
 });
 
-// 中文意思區，單獨亂序（要複製一份新陣列）
-const shuffledMeanings = [...shuffledIds].sort(() => Math.random() - 0.5);
-
+// 中文意思區，單獨亂序
+const shuffledMeanings = shuffledIds.sort(() => Math.random() - 0.5);
 shuffledMeanings.forEach(id => {
   const entry = data[id];
 
@@ -192,22 +198,15 @@ shuffledMeanings.forEach(id => {
   chineseCol.appendChild(meaningDiv);
 });
 
-// 播放英文單字語音
-document.querySelectorAll('.word').forEach(el => {
-  el.addEventListener('click', () => {
-    const textToSpeak = el.dataset.pronounce;
-    speakText(textToSpeak, 'en-US');
-  });
-});
-
 englishCol.addEventListener('click', (e) => {
-  if (e.target.closest('.word') && !e.target.closest('.word').classList.contains('matched')) {
+  if (e.target.classList.contains('word') && !e.target.classList.contains('matched')) {
     document.querySelectorAll('.word.selected').forEach(el => el.classList.remove('selected'));
-    e.target.closest('.word').classList.add('selected');
-    selectedWord = e.target.closest('.word');
+    e.target.classList.add('selected');
+    selectedWord = e.target;
   }
 });
 
+const words = document.querySelectorAll('.word');
 const meanings = document.querySelectorAll('.meaning');
 
 meanings.forEach(meaning => {
