@@ -19,6 +19,7 @@ charm: [
       sentence: "The magician charmed the audience with his tricks.",
       translation: "魔術師用他的把戲吸引了觀眾。"
     }
+  ]
   development: {
     word: "development",
     meaning: "發展",
