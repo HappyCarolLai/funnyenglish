@@ -6,18 +6,20 @@ const data = {
     sentence: "They traveled to Argentina for their summer vacation.",
     translation: "他們去阿根廷度暑假。"
   },
-charm: {
-      pos: "n.",
-      meaning: "魅力；吸引力",
-      sentence: "She has a natural charm that makes everyone like her.",
-      translation: "她有一種天生的魅力，讓大家都喜歡她。"
-    },
-    {
-      pos: "v.",
-      meaning: "使著迷；吸引",
-      sentence: "The magician charmed the audience with his tricks.",
-      translation: "魔術師用他的把戲吸引了觀眾。"
-    }
+  charm1: {
+    word: "charm(n.)",
+    meaning: "魅力；吸引力",
+    pos: "n.",
+    sentence: "She has a natural charm that makes everyone like her.",
+    translation: "她有一種天生的魅力，讓大家都喜歡她。"
+  },
+  charm2: {
+    word: "charm(v.)",
+    meaning: "使著迷；吸引",
+    pos: "v.",
+    sentence: "The magician charmed the audience with his tricks.",
+    translation: "魔術師用他的把戲吸引了觀眾。"
+  },
   development: {
     word: "development",
     meaning: "發展",
