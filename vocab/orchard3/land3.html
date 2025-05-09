@@ -132,88 +132,111 @@
 
 
   <script>
-    const words = [
-      {
-        word: "Argentina",
-        type: "noun",
-        meaning: "阿根廷",
-        examples: [
-          { en: "Argentina is known for its beautiful landscapes.", zh: "阿根廷以其美麗的風景而聞名。" }
-        ]
-      },
-      {
-        word: "charm",
-        type: "noun",
-        meaning: "魅力，吸引力",
-        examples: [
-          { en: "Her charm and beauty captivated everyone in the room.", zh: "她的魅力和美貌吸引了房間裡的每一個人。" }
-        ]
-      },
-      {
-        word: "development",
-        type: "noun",
-        meaning: "發展，開發",
-        examples: [
-          { en: "The development of new technologies is changing the world.", zh: "新技術的發展正在改變世界。" }
-        ]
-      },
-      {
-        word: "fist",
-        type: "noun",
-        meaning: "拳頭",
-        examples: [
-          { en: "He clenched his fist in anger.", zh: "他憤怒地握緊了拳頭。" }
-        ]
-      },
-      {
-        word: "hunger",
-        type: "noun",
-        meaning: "飢餓",
-        examples: [
-          { en: "The children were suffering from hunger in the famine.", zh: "孩子們在饑荒中忍受著飢餓。" }
-        ]
-      },
-      {
-        word: "lost",
-        type: "adjective",
-        meaning: "迷失的，失去的",
-        examples: [
-          { en: "I lost my keys and can't find them anywhere.", zh: "我丟了鑰匙，怎麼也找不到。" }
-        ]
-      },
-      {
-        word: "parrot",
-        type: "noun",
-        meaning: "鸚鵡",
-        examples: [
-          { en: "The parrot imitated everything I said.", zh: "那隻鸚鵡模仿我說的每一句話。" }
-        ]
-      },
-      {
-        word: "rob",
-        type: "verb",
-        meaning: "搶劫，竊取",
-        examples: [
-          { en: "The thief tried to rob the bank but was caught.", zh: "小偷試圖搶劫銀行，但被抓住了。" }
-        ]
-      },
-      {
-        word: "stormy",
-        type: "adjective",
-        meaning: "暴風雨的，暴躁的",
-        examples: [
-          { en: "The stormy weather kept everyone inside.", zh: "暴風雨的天氣讓每個人都待在室內。" }
-        ]
-      },
-      {
-        word: "trace",
-        type: "noun",
-        meaning: "痕跡，蹤跡",
-        examples: [
-          { en: "The police followed the trace of the criminal.", zh: "警方跟蹤了罪犯的痕跡。" }
-        ]
-      }
-    ];
+ const words = [
+  {
+    word: "badly",
+    type: "adverb",
+    meaning: "糟糕地；非常",
+    examples: [
+      { en: "He was badly injured in the accident.", zh: "他在事故中受了重傷。" },
+      { en: "I need a vacation badly.", zh: "我非常需要度假。" }
+    ]
+  },
+  {
+    word: "collar",
+    type: "noun",
+    meaning: "衣領；項圈",
+    examples: [
+      { en: "He adjusted his shirt collar.", zh: "他調整了襯衫的衣領。" },
+      { en: "The dog wore a red collar.", zh: "那隻狗戴著紅色的項圈。" }
+    ]
+  },
+  {
+    word: "drill",
+    type: "noun",
+    meaning: "鑽子；訓練",
+    examples: [
+      { en: "The dentist used a drill on my tooth.", zh: "牙醫用鑽子處理我的牙齒。" },
+      { en: "We had a fire drill at school.", zh: "我們在學校進行了消防演練。" }
+    ],
+    type2: "verb",
+    meaning2: "鑽（孔）；訓練",
+    examples2: [
+      { en: "They drilled a hole in the wall.", zh: "他們在牆上鑽了一個洞。" },
+      { en: "The coach drilled us every morning.", zh: "教練每天早上訓練我們。" }
+    ]
+  },
+  {
+    word: "garage",
+    type: "noun",
+    meaning: "車庫；修車廠",
+    examples: [
+      { en: "We parked the car in the garage.", zh: "我們把車停在車庫裡。" },
+      { en: "He works at a car repair garage.", zh: "他在一家修車廠工作。" }
+    ]
+  },
+  {
+    word: "issue",
+    type: "noun",
+    meaning: "問題；期刊",
+    examples: [
+      { en: "They discussed the issue of climate change.", zh: "他們討論了氣候變遷的問題。" },
+      { en: "I read the latest issue of the magazine.", zh: "我讀了這本雜誌的最新一期。" }
+    ],
+    type2: "verb",
+    meaning2: "發布；發行",
+    examples2: [
+      { en: "The government will issue new regulations.", zh: "政府將發布新規定。" },
+      { en: "They issued a statement to the press.", zh: "他們向媒體發表了一份聲明。" }
+    ]
+  },
+  {
+    word: "mental",
+    type: "adjective",
+    meaning: "心理的；精神的",
+    examples: [
+      { en: "She is under a lot of mental stress.", zh: "她承受很大的心理壓力。" },
+      { en: "He has a strong mental focus.", zh: "他有很強的心理專注力。" }
+    ]
+  },
+  {
+    word: "plenty",
+    type: "pronoun",
+    meaning: "大量，充足",
+    examples: [
+      { en: "We have plenty of time.", zh: "我們有充足的時間。" },
+      { en: "There’s plenty to eat.", zh: "有很多東西可以吃。" }
+    ]
+  },
+  {
+    word: "separation",
+    type: "noun",
+    meaning: "分離；分居",
+    examples: [
+      { en: "The separation of the two friends was painful.", zh: "這兩位朋友的分離令人痛苦。" },
+      { en: "They are living in separation.", zh: "他們處於分居狀態。" }
+    ]
+  },
+  {
+    word: "survivor",
+    type: "noun",
+    meaning: "倖存者",
+    examples: [
+      { en: "He is the only survivor of the crash.", zh: "他是這場墜機事故中唯一的倖存者。" },
+      { en: "The survivor shared her story with the news.", zh: "這位倖存者向新聞分享了她的故事。" }
+    ]
+  },
+  {
+    word: "vivid",
+    type: "adjective",
+    meaning: "生動的；鮮明的",
+    examples: [
+      { en: "She gave a vivid description of the scene.", zh: "她對場景做了生動的描述。" },
+      { en: "I still have vivid memories of my childhood.", zh: "我對童年仍有鮮明的記憶。" }
+    ]
+  }
+];
+
 
     const wordGrid = document.getElementById("wordGrid");
     const popup = document.getElementById("popup");
