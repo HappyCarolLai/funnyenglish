@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>地塊2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8e1;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #d35400;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .word-box {
+      background-color: #f6b93b;
+      color: white;
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 20px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .word-box:hover {
+      background-color: #e67e22;
+    }
+    .link {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .game-btn {
+      background-color: #f8c291;
+      color: white;
+      font-size: 1.2rem;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      text-decoration: none; /* 去除連結的底線 */
+    }
+
+    .game-btn:hover {
+      background-color: #e67e22;
+    }
+
+    .game-btn:focus {
+      outline: none; /* 去除聚焦時的邊框 */
+    }
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fffefc;
+  padding: 16px;
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  width: 90vw;
+  max-width: 400px;
+  min-width: 260px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  box-sizing: border-box;       /* 讓 padding 與 border 不撐爆 */
+  overflow-wrap: break-word;    /* 長句斷行 */
+}
+    .popup h2 {
+      margin-top: 0;
+      color: #d35400;
+      font-size: 2rem;
+    }
+    .example {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+      font-size: 1.2rem;
+    }
+    .play-btn {
+      background-color: #f8c291;
+      border: none;
+      padding: 5px 10px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .close-btn {
+      margin-top: 20px;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>地塊2</h1>
+  <div class="grid" id="wordGrid"></div>
+
+  <div class="popup" id="popup">
+    <h2 id="popupWord"></h2>
+    <p id="popupInfo"></p>
+    <div id="popupExamples"></div>
+    <button class="close-btn" onclick="closePopup()">關閉</button>
+  </div>
+  <div class="link">
+    <a href="games/land1games.html">
+      <button class="game-btn">進入中英配對遊戲</button>
+    </a>
+  </div>
+
+
+
+  <script>
+    const words = [
+  {
+    word: "ancient",
+    type: "adjective",
+    meaning: "古老的，古代的",
+    examples: [
+      { en: "They discovered ancient ruins in the desert.", zh: "他們在沙漠中發現了古代遺跡。" }
+    ]
+  },
+  {
+    word: "canyon",
+    type: "noun",
+    meaning: "峽谷",
+    examples: [
+      { en: "The Grand Canyon is one of the most famous canyons in the world.", zh: "大峽谷是世界上最著名的峽谷之一。" }
+    ]
+  },
+  {
+    word: "degree",
+    type: "noun",
+    meaning: "學位；程度；度（溫度、角度等）",
+    examples: [
+      { en: "She earned a degree in engineering.", zh: "她獲得了工程學的學位。" },
+      { en: "The temperature dropped ten degrees overnight.", zh: "氣溫在一夜之間下降了十度。" }
+    ]
+  },
+  {
+    word: "feature",
+    type: "noun / verb",
+    meaning: "特徵，特色；以…為特色",
+    examples: [
+      { en: "The main feature of this phone is its large screen.", zh: "這款手機的主要特色是大螢幕。" },
+      { en: "The magazine will feature an interview with the actor.", zh: "這本雜誌將以這位演員的訪談為特色內容。" }
+    ]
+  },
+  {
+    word: "housekeeper",
+    type: "noun",
+    meaning: "管家，女管家",
+    examples: [
+      { en: "The housekeeper keeps the house clean and organized.", zh: "女管家保持房子乾淨整潔。" }
+    ]
+  },
+  {
+    word: "lock",
+    type: "noun / verb",
+    meaning: "鎖；鎖上，鎖住",
+    examples: [
+      { en: "He turned the key in the lock.", zh: "他把鑰匙插進鎖裡轉動。" },
+      { en: "Please lock the door before you leave.", zh: "離開前請把門鎖上。" }
+    ]
+  },
+  {
+    word: "ox",
+    type: "noun",
+    meaning: "公牛，牛（尤指用於農耕的）",
+    examples: [
+      { en: "The farmer used an ox to plow the field.", zh: "農夫用牛犁田。" }
+    ]
+  },
+  {
+    word: "resist",
+    type: "verb",
+    meaning: "抵抗，抗拒",
+    examples: [
+      { en: "She couldn't resist eating another piece of cake.", zh: "她無法抗拒再吃一塊蛋糕。" }
+    ]
+  },
+  {
+    word: "steam",
+    type: "noun / verb",
+    meaning: "蒸汽；冒蒸汽，用蒸汽煮",
+    examples: [
+      { en: "The kitchen was filled with steam.", zh: "廚房裡充滿了蒸汽。" },
+      { en: "She steamed the vegetables for dinner.", zh: "她把蔬菜蒸熟作為晚餐。" }
+    ]
+  },
+  {
+    word: "trend",
+    type: "noun / verb",
+    meaning: "趨勢；呈現趨勢",
+    examples: [
+      { en: "There's a growing trend toward remote work.", zh: "遠距工作的趨勢日益增長。" },
+      { en: "Prices are trending upward.", zh: "價格呈上升趨勢。" }
+    ]
+  }
+];
+
+
+    const wordGrid = document.getElementById("wordGrid");
+    const popup = document.getElementById("popup");
+    const popupWord = document.getElementById("popupWord");
+    const popupInfo = document.getElementById("popupInfo");
+    const popupExamples = document.getElementById("popupExamples");
+
+    words.forEach(item => {
+      const box = document.createElement("div");
+      box.className = "word-box";
+      box.textContent = item.word;
+      box.addEventListener("click", () => {
+        popupWord.textContent = item.word;
+        popupInfo.textContent = `${item.type}：${item.meaning}`;
+        popupExamples.innerHTML = "";
+        item.examples.forEach(ex => {
+          const exDiv = document.createElement("div");
+          exDiv.className = "example";
+          exDiv.innerHTML = `
+            <strong>英文：</strong> ${ex.en}
+            <button class="play-btn">🔈</button><br/>
+            <strong>中文：</strong> ${ex.zh}
+          `;
+          const btn = exDiv.querySelector('.play-btn');
+          btn.addEventListener('click', () => speak(ex.en)); 
+          popupExamples.appendChild(exDiv);
+        });
+        speak(item.word);
+        popup.style.display = "block";
+      });
+      wordGrid.appendChild(box);
+    });
+
+    function closePopup() {
+      popup.style.display = "none";
+    }
+
+    let loadedVoices = [];
+
+    function loadVoices() {
+      loadedVoices = speechSynthesis.getVoices();
+      if (loadedVoices.length === 0) {
+        speechSynthesis.onvoiceschanged = () => {
+          loadedVoices = speechSynthesis.getVoices();
+        };
+      }
+    }
+    loadVoices();
+
+    function speak(text) {
+      if (!text) return;
+
+      const utterance = new SpeechSynthesisUtterance(text);
+
+      const preferredVoice = loadedVoices.find(voice =>
+        voice.name === 'Samantha' || voice.name.includes('Siri') || voice.name.includes('Google US English')
+      ) || loadedVoices.find(voice => voice.lang === 'en-US') || loadedVoices[0];
+
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
+      }
+
+      utterance.lang = 'en-US';
+
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+</body>
+</html>
