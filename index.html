@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>英文學習首頁</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #f9f3ef;
+      margin: 0;
+      padding: 2em;
+      color: #4a2f1b;
+    }
+    h1 {
+      text-align: center;
+      color: #a05735;
+    }
+    .main-container {
+      display: flex;
+      justify-content: center;
+      gap: 2em;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 2em auto;
+    }
+    .card {
+      background: #f7b267;
+      border-radius: 16px;
+      padding: 2em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 200px;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: #fdd692;
+    }
+    .card:active {
+      background-color: #f4a742;
+      transform: scale(0.98);
+    }
+    .card a {
+      text-decoration: none;
+      color: #4a2f1b;
+      font-weight: bold;
+      font-size: 1.2em;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>英文學習首頁</h1>
+  <div class="main-container">
+    <div class="card">
+      <a href="vocab-index.html">單字庫</a>
+    </div>
+    <div class="card">
+      <a href="similar-index.html">相似字義</a>
+    </div>
+  </div>
+</body>
+</html>

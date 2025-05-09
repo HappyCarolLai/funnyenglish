@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>單字果園選單</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #fff9f3;
+      margin: 0;
+      padding: 2em;
+      color: #4a2f1b;
+    }
+    h1 {
+      text-align: center;
+      color: #a05735;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.2em;
+      max-width: 800px;
+      margin: 2em auto;
+    }
+    .card {
+      background: #ffe2b3;
+      border-radius: 16px;
+      padding: 1.5em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: #ffefcc;
+    }
+    .card:active {
+      background-color: #f4c27b;
+      transform: scale(0.98);
+    }
+    .card a {
+      text-decoration: none;
+      color: #4a2f1b;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>選擇果園</h1>
+  <div class="container">
+    <div class="card"><a href="vocab/orchard1.html">果園 1</a></div>
+    <div class="card"><a href="vocab/orchard2.html">果園 2</a></div>
+    <div class="card"><a href="vocab/orchard3.html">果園 3</a></div>
+    <div class="card"><a href="vocab/orchard4.html">果園 4</a></div>
+    <div class="card"><a href="vocab/orchard5.html">果園 5</a></div>
+    <div class="card"><a href="vocab/orchard6.html">果園 6</a></div>
+    <div class="card"><a href="vocab/orchard7.html">果園 7</a></div>
+    <div class="card"><a href="vocab/orchard8.html">果園 8</a></div>
+    <div class="card"><a href="vocab/orchard9.html">果園 9</a></div>
+    <div class="card"><a href="vocab/orchard10.html">果園 10</a></div>
+  </div>
+</body>
+</html>
