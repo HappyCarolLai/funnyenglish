@@ -1,93 +1,86 @@
 const data = {
-  Argentina: {
-    word: "Argentina",
-    meaning: "阿根廷",
-    pos: "n.",
-    sentence: "They traveled to Argentina for their summer vacation.",
-    translation: "他們去阿根廷度暑假。"
+  badly: {
+    word: "badly",
+    meaning: "糟糕地；嚴重地",
+    pos: "adv.",
+    sentence: "He was badly injured in the accident.",
+    translation: "他在事故中受了重傷。"
   },
-  charm1: {
-    word: "charm(n.)",
-    meaning: "魅力；吸引力",
+  collar: {
+    word: "collar",
+    meaning: "衣領；項圈",
     pos: "n.",
-    sentence: "She has a natural charm that makes everyone like her.",
-    translation: "她有一種天生的魅力，讓大家都喜歡她。"
+    sentence: "He adjusted the collar of his shirt.",
+    translation: "他調整了襯衫的衣領。"
   },
-  charm2: {
-    word: "charm(v.)",
-    meaning: "使著迷；吸引",
+  drill1: {
+    word: "drill(n.)",
+    meaning: "鑽子；操練",
+    pos: "n.",
+    sentence: "The fire drill was held every month.",
+    translation: "每個月都會舉行消防演習。"
+  },
+  drill2: {
+    word: "drill(v.)",
+    meaning: "鑽孔；訓練",
     pos: "v.",
-    sentence: "The magician charmed the audience with his tricks.",
-    translation: "魔術師用他的把戲吸引了觀眾。"
+    sentence: "They drilled a hole in the wall.",
+    translation: "他們在牆上鑽了個洞。"
   },
-  development: {
-    word: "development",
-    meaning: "發展",
+  garage: {
+    word: "garage",
+    meaning: "車庫；修車廠",
     pos: "n.",
-    sentence: "The city has seen rapid development in the last decade.",
-    translation: "這座城市在過去十年快速發展。"
+    sentence: "He parked his car in the garage.",
+    translation: "他把車停在車庫裡。"
   },
-  fist: {
-    word: "fist",
-    meaning: "拳頭",
+  issue1: {
+    word: "issue(n.)",
+    meaning: "問題；議題",
     pos: "n.",
-    sentence: "He raised his fist in anger.",
-    translation: "他憤怒地舉起拳頭。"
+    sentence: "They discussed the issue of climate change.",
+    translation: "他們討論了氣候變遷的議題。"
   },
-  hunger: {
-    word: "hunger",
-    meaning: "飢餓",
-    pos: "n.",
-    sentence: "After the long hike, they were weak with hunger.",
-    translation: "長途健行後，他們因飢餓而虛弱。"
-  },
-  lost1: {
-    word: "lost(adj.)",
-    meaning: "迷路的；失去的",
-    pos: "adj.",
-    sentence: "We got lost in the forest for hours.",
-    translation: "我們在森林中迷路了好幾個小時。"
-  },
-  lost2: {
-    word: "lost(v.)",
-    meaning: "失去（lose 的過去式）",
-    pos: "adj.",
-    sentence: "She lost her keys and couldn't get into the house.",
-    translation: "她把鑰匙弄丟了，進不了家門。"
-  },
-  parrot: {
-    word: "parrot",
-    meaning: "鸚鵡",
-    pos: "n.",
-    sentence: "The parrot can mimic human speech.",
-    translation: "這隻鸚鵡會模仿人類說話。"
-  },
-  rob: {
-    word: "rob",
-    meaning: "搶劫；盜取",
+  issue2: {
+    word: "issue(v.)",
+    meaning: "發行；發布",
     pos: "v.",
-        sentence: "They tried to rob a bank but were caught.",
-    translation: "他們試圖搶銀行，但被抓住了。"
+    sentence: "The government issued a warning about the storm.",
+    translation: "政府發布了關於暴風雨的警告。"
   },
-  stormy: {
-    word: "stormy",
-    meaning: "暴風雨的；激烈的",
+  mental: {
+    word: "mental",
+    meaning: "心理的；精神的",
     pos: "adj.",
-    sentence: "The boat sank during a stormy night.",
-    translation: "船在一個暴風雨的夜晚沉沒了。"
+    sentence: "Stress can affect your mental health.",
+    translation: "壓力會影響你的心理健康。"
   },
-  trace1: {
-    word: "trace(n.)",
-    meaning: "蹤跡；痕跡",
+  plenty: {
+    word: "plenty",
+    meaning: "大量；充足",
+    pos: "pron./n.",
+    sentence: "There is plenty of food for everyone.",
+    translation: "大家有充足的食物。"
+  },
+  separation: {
+    word: "separation",
+    meaning: "分離；分開",
     pos: "n.",
-    sentence: "The police found no trace of the missing man.",
-    translation: "警方沒有發現失蹤男子的任何蹤跡。"
+    sentence: "The separation from his family was difficult.",
+    translation: "與家人的分離讓他很難受。"
   },
-  trace2: {
-    word: "trace(v.)",
-    meaning: "追蹤；找到",
-    pos: "v.",
-    sentence: "They traced the call to a location downtown.",
-    translation: "他們追蹤到電話是從市中心打來的。"
+  survivor: {
+    word: "survivor",
+    meaning: "倖存者",
+    pos: "n.",
+    sentence: "The survivor told her story to the reporters.",
+    translation: "倖存者向記者講述了她的故事。"
+  },
+  vivid: {
+    word: "vivid",
+    meaning: "生動的；鮮明的",
+    pos: "adj.",
+    sentence: "She gave a vivid description of the scene.",
+    translation: "她對現場做了生動的描述。"
   }
 };
