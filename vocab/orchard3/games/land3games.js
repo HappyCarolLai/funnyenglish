@@ -6,8 +6,7 @@ const data = {
     sentence: "They traveled to Argentina for their summer vacation.",
     translation: "他們去阿根廷度暑假。"
   },
-charm: [
-    {
+charm: {
       pos: "n.",
       meaning: "魅力；吸引力",
       sentence: "She has a natural charm that makes everyone like her.",
@@ -19,7 +18,6 @@ charm: [
       sentence: "The magician charmed the audience with his tricks.",
       translation: "魔術師用他的把戲吸引了觀眾。"
     }
-  ]
   development: {
     word: "development",
     meaning: "發展",
