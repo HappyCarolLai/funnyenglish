@@ -176,8 +176,9 @@ shuffledIds.forEach(id => {
   wordDiv.dataset.id = id;
   wordDiv.innerText = entry.word;
   wordDiv.addEventListener('click', () => {
-    speakText(entry.word, 'en-US');
-  });
+  const cleanWord = entry.word.replace(/\(.*\)/, '').trim(); // 移除括號內的詞性
+  speakText(cleanWord, 'en-US');
+});
   englishCol.appendChild(wordDiv);
 });
 
