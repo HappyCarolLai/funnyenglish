@@ -176,8 +176,8 @@ shuffledIds.forEach(id => {
   englishCol.appendChild(wordDiv);
 });
 
-// 中文意思區
-const shuffledMeanings = shuffledIds.sort(() => Math.random() - 0.5);
+// 中文意思區，單獨亂序
+const shuffledMeanings = [...shuffledIds].sort(() => Math.random() - 0.5);
 shuffledMeanings.forEach(id => {
   const entry = data[id];
 
@@ -185,8 +185,12 @@ shuffledMeanings.forEach(id => {
   meaningDiv.className = 'meaning';
   meaningDiv.dataset.id = id;
   meaningDiv.innerText = entry.meaning;
+  meaningDiv.addEventListener('click', () => {
+    speakText(entry.meaning, 'zh-TW');
+  });
   chineseCol.appendChild(meaningDiv);
 });
+
 
 // 播放英文單字語音
 document.querySelectorAll('.word').forEach(el => {
