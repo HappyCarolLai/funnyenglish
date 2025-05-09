@@ -178,14 +178,8 @@ shuffledIds.forEach(id => {
 
 // 中文意思區，單獨亂序（要複製一份新陣列）
 const shuffledMeanings = [...shuffledIds].sort(() => Math.random() - 0.5);
-const seenIds = new Set();
 
 shuffledMeanings.forEach(id => {
-  if (seenIds.has(id)) {
-    console.warn(`Duplicate ID found: ${id}`);
-  }
-  seenIds.add(id);
-
   const entry = data[id];
 
   const meaningDiv = document.createElement('div');
