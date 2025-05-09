@@ -14,7 +14,7 @@ const data = {
     translation: "他們整個下午都在深峽谷中健行。"
   },
   degree: {
-    word: "degree(n. 學位)",
+    word: "degree(n.)",
     meaning: "學位",
     pos: "n.",
     sentence: "She earned a degree in biology from the university.",
