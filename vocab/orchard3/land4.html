@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>地塊4</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8e1;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #d35400;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .word-box {
+      background-color: #f6b93b;
+      color: white;
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 20px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .word-box:hover {
+      background-color: #e67e22;
+    }
+    .link {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .game-btn {
+      background-color: #f8c291;
+      color: white;
+      font-size: 1.2rem;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      text-decoration: none; /* 去除連結的底線 */
+    }
+
+    .game-btn:hover {
+      background-color: #e67e22;
+    }
+
+    .game-btn:focus {
+      outline: none; /* 去除聚焦時的邊框 */
+    }
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fffefc;
+  padding: 16px;
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  width: 90vw;
+  max-width: 400px;
+  min-width: 260px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  box-sizing: border-box;       /* 讓 padding 與 border 不撐爆 */
+  overflow-wrap: break-word;    /* 長句斷行 */
+}
+    .popup h2 {
+      margin-top: 0;
+      color: #d35400;
+      font-size: 2rem;
+    }
+    .example {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+      font-size: 1.2rem;
+    }
+    .play-btn {
+      background-color: #f8c291;
+      border: none;
+      padding: 5px 10px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .close-btn {
+      margin-top: 20px;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>地塊4</h1>
+  <div class="grid" id="wordGrid"></div>
+
+  <div class="popup" id="popup">
+    <h2 id="popupWord"></h2>
+    <p id="popupInfo"></p>
+    <div id="popupExamples"></div>
+    <button class="close-btn" onclick="closePopup()">關閉</button>
+  </div>
+  <div class="link">
+    <a href="games/land4games.html">
+      <button class="game-btn">進入中英配對遊戲</button>
+    </a>
+  </div>
+
+
+
+  <script>
+const words = [
+  {
+    word: "armed",
+    type: "adjective",
+    meaning: "武裝的；攜帶武器的",
+    examples: [
+      { en: "The police were armed with rifles.", zh: "警察配備了步槍。" },
+      { en: "He walked into the building armed and dangerous.", zh: "他攜帶武器走進建築物，十分危險。" }
+    ]
+  },
+  {
+    word: "cheek",
+    type: "noun",
+    meaning: "臉頰；厚臉皮",
+    examples: [
+      { en: "She kissed him on the cheek.", zh: "她親了他的臉頰一下。" },
+      { en: "He had the cheek to ask for more money.", zh: "他竟厚著臉皮要求更多錢。" }
+    ]
+  },
+  {
+    word: "dinosaur",
+    type: "noun",
+    meaning: "恐龍",
+    examples: [
+      { en: "Dinosaurs roamed the Earth millions of years ago.", zh: "數百萬年前，恐龍曾在地球上漫遊。" },
+      { en: "My nephew loves playing with his toy dinosaurs.", zh: "我外甥喜歡玩他的恐龍玩具。" }
+    ]
+  },
+  {
+    word: "flashlight",
+    type: "noun",
+    meaning: "手電筒",
+    examples: [
+      { en: "I used a flashlight to find the keys in the dark.", zh: "我用手電筒在黑暗中找鑰匙。" },
+      { en: "Don’t forget to pack a flashlight for camping.", zh: "別忘了打包手電筒去露營。" }
+    ]
+  },
+  {
+    word: "imbalance",
+    type: "noun",
+    meaning: "不平衡；失衡",
+    examples: [
+      { en: "There is an imbalance between work and life.", zh: "工作與生活之間存在不平衡。" },
+      { en: "The chemical imbalance affected his mood.", zh: "化學失衡影響了他的情緒。" }
+    ]
+  },
+  {
+    word: "luggage",
+    type: "noun",
+    meaning: "行李",
+    examples: [
+      { en: "She packed her luggage for the trip.", zh: "她為旅行打包了行李。" },
+      { en: "You can leave your luggage at the front desk.", zh: "你可以把行李寄放在櫃台。" }
+    ]
+  },
+  {
+    word: "passion",
+    type: "noun",
+    meaning: "熱情；激情",
+    examples: [
+      { en: "He has a passion for music.", zh: "他對音樂充滿熱情。" },
+      { en: "She spoke with great passion.", zh: "她充滿激情地發言。" }
+    ]
+  },
+  {
+    word: "rocky",
+    type: "adjective",
+    meaning: "多岩石的；不穩定的",
+    examples: [
+      { en: "We climbed a rocky mountain trail.", zh: "我們攀登了一條多岩石的山路。" },
+      { en: "Their relationship had a rocky start.", zh: "他們的關係一開始並不順利。" }
+    ]
+  },
+  {
+    word: "straw",
+    type: "noun",
+    meaning: "吸管；稻草",
+    examples: [
+      { en: "He drank his juice through a straw.", zh: "他用吸管喝果汁。" },
+      { en: "The barn was filled with straw.", zh: "穀倉裡堆滿了稻草。" }
+    ]
+  },
+  {
+    word: "trumpet",
+    type: "noun",
+    meaning: "小號；喇叭",
+    examples: [
+      { en: "He played a solo on the trumpet.", zh: "他用小號演奏了一段獨奏。" },
+      { en: "The trumpet sounded loudly across the field.", zh: "喇叭聲響徹整個田野。" }
+    ]
+  }
+];
+
+
+
+    const wordGrid = document.getElementById("wordGrid");
+    const popup = document.getElementById("popup");
+    const popupWord = document.getElementById("popupWord");
+    const popupInfo = document.getElementById("popupInfo");
+    const popupExamples = document.getElementById("popupExamples");
+
+    words.forEach(item => {
+      const box = document.createElement("div");
+      box.className = "word-box";
+      box.textContent = item.word;
+      box.addEventListener("click", () => {
+        popupWord.textContent = item.word;
+        popupInfo.textContent = `${item.type}：${item.meaning}`;
+        popupExamples.innerHTML = "";
+        item.examples.forEach(ex => {
+          const exDiv = document.createElement("div");
+          exDiv.className = "example";
+          exDiv.innerHTML = `
+            <strong>英文：</strong> ${ex.en}
+            <button class="play-btn">🔈</button><br/>
+            <strong>中文：</strong> ${ex.zh}
+          `;
+          const btn = exDiv.querySelector('.play-btn');
+          btn.addEventListener('click', () => speak(ex.en)); 
+          popupExamples.appendChild(exDiv);
+        });
+        speak(item.word);
+        popup.style.display = "block";
+      });
+      wordGrid.appendChild(box);
+    });
+
+    function closePopup() {
+      popup.style.display = "none";
+    }
+
+    let loadedVoices = [];
+
+    function loadVoices() {
+      loadedVoices = speechSynthesis.getVoices();
+      if (loadedVoices.length === 0) {
+        speechSynthesis.onvoiceschanged = () => {
+          loadedVoices = speechSynthesis.getVoices();
+        };
+      }
+    }
+    loadVoices();
+
+    function speak(text) {
+      if (!text) return;
+
+      const utterance = new SpeechSynthesisUtterance(text);
+
+      const preferredVoice = loadedVoices.find(voice =>
+        voice.name === 'Samantha' || voice.name.includes('Siri') || voice.name.includes('Google US English')
+      ) || loadedVoices.find(voice => voice.lang === 'en-US') || loadedVoices[0];
+
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
+      }
+
+      utterance.lang = 'en-US';
+
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+</body>
+</html>
