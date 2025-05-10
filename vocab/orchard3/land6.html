@@ -129,92 +129,99 @@
     </a>
   </div>
 
-
-
   <script>
 const words = [
   {
     word: "avoid",
-    meaning: "避免",
-    pos: "v.",
-    sentence: "She tries to avoid making the same mistake.",
-    translation: "她試圖避免犯同樣的錯誤。",
+    type: "verb",
+    meaning: "避免；避開",
+    examples: [
+      { en: "He tried to avoid the question.", zh: "他試圖避免這個問題。" },
+      { en: "She avoids eating junk food.", zh: "她避免吃垃圾食品。" }
+    ]
   },
   {
     word: "closet",
-    meaning: "衣櫥；儲藏室",
-    pos: "n.",
-    sentence: "I put my jacket in the closet.",
-    translation: "我把外套放進衣櫥裡。",
+    type: "noun",
+    meaning: "衣櫃；壁櫥",
+    examples: [
+      { en: "She hung her coat in the closet.", zh: "她把外套掛在衣櫃裡。" },
+      { en: "The closet is full of clothes.", zh: "衣櫃裡滿是衣服。" }
+    ]
   },
-   {
+  {
     word: "donkey",
+    type: "noun",
     meaning: "驢子",
-    pos: "n.",
-    sentence: "The donkey carried the load up the hill.",
-    translation: "驢子把貨物搬到山上。",
+    examples: [
+      { en: "The donkey carried the heavy load.", zh: "驢子背著重物。" },
+      { en: "He is as stubborn as a donkey.", zh: "他像驢子一樣固執。" }
+    ]
   },
   {
     word: "frozen",
-    meaning: "結冰的；冷凍的",
-    pos: "adj.",
-    sentence: "The lake was frozen over in winter.",
-    translation: "湖面在冬天結冰了。",
+    type: "adjective",
+    meaning: "凍結的；冷凍的",
+    examples: [
+      { en: "The lake is frozen in winter.", zh: "湖面在冬天結冰了。" },
+      { en: "She bought frozen vegetables.", zh: "她買了冷凍蔬菜。" }
+    ]
   },
   {
     word: "inner",
-    meaning: "內部的",
-    pos: "adj.",
-    sentence: "The inner workings of the machine are quite complex.",
-    translation: "這台機器的內部運作相當複雜。",
+    type: "adjective",
+    meaning: "內部的；內心的",
+    examples: [
+      { en: "He has an inner strength.", zh: "他有內在的力量。" },
+      { en: "The inner circle of friends is important.", zh: "內圈的朋友很重要。" }
+    ]
   },
   {
     word: "mean",
-    meaning: "卑鄙的；有意圖的；意指",
-    pos: "adj./v.",
-    sentence: [
-      {
-        pos: "adj.",
-        en: "That was a really mean thing to do.",
-        zh: "那真是個卑鄙的行為。",
-      },
-      {
-        pos: "v.",
-        en: "What do you mean by that?",
-        zh: "你那個意思是什麼？",
-      }
+    type: "adjective/verb",
+    meaning: "卑鄙的；意味著；意指",
+    examples: [
+      { en: "He is mean to his friends.", zh: "他對朋友很卑鄙。" },
+      { en: "What does this word mean?", zh: "這個詞是什麼意思？" }
     ]
   },
   {
     word: "pill",
-    meaning: "藥丸",
-    pos: "n.",
-    sentence: "I need to take my pill after breakfast.",
-    translation: "我早餐後需要吃藥。",
+    type: "noun",
+    meaning: "藥丸；藥片",
+    examples: [
+      { en: "He took a pill for his headache.", zh: "他吃了一顆藥丸來治頭痛。" },
+      { en: "The doctor prescribed a pill.", zh: "醫生開了一顆藥片。" }
+    ]
   },
   {
     word: "scrub",
-    meaning: "擦洗；擦拭",
-    pos: "v.",
-    sentence: "She scrubbed the floor until it was clean.",
-    translation: "她擦洗地板，直到它變乾淨。",
+    type: "verb",
+    meaning: "擦洗；刷洗",
+    examples: [
+      { en: "She scrubbed the floor clean.", zh: "她把地板擦得很乾淨。" },
+      { en: "He needs to scrub the dishes.", zh: "他需要刷碗。" }
+    ]
   },
   {
     word: "sunset",
-    meaning: "日落",
-    pos: "n.",
-    sentence: "We watched the sunset from the beach.",
-    translation: "我們在沙灘上看日落。",
+    type: "noun",
+    meaning: "日落；夕陽",
+    examples: [
+      { en: "The sunset was beautiful last night.", zh: "昨晚的日落很美。" },
+      { en: "We watched the sunset on the beach.", zh: "我們在海灘上看日落。" }
+    ]
   },
   {
     word: "vest",
-    meaning: "背心；汗衫",
-    pos: "n.",
-    sentence: "He wore a vest under his shirt.",
-    translation: "他在襯衫下面穿了一件背心。",
+    type: "noun",
+    meaning: "背心；馬甲",
+    examples: [
+      { en: "He wore a vest under his shirt.", zh: "他在襯衫裡穿了一件背心。" },
+      { en: "The vest is made of cotton.", zh: "這件背心是棉製的。" }
+    ]
   }
-];
-
+]
 
     const wordGrid = document.getElementById("wordGrid");
     const popup = document.getElementById("popup");
