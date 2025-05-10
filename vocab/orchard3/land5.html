@@ -132,105 +132,69 @@
   <script>
 const words = [
   {
-    word: "armed",
+    word: "aware",
     type: "adjective",
-    meaning: "武裝的；攜帶武器的",
+    meaning: "意識到的；知道的",
     examples: [
-      { en: "The police were armed with rifles.", zh: "警察配備了步槍。" },
-      { en: "He walked into the building armed and dangerous.", zh: "他攜帶武器走進建築物，十分危險。" }
+      { en: "She was aware of the problem.", zh: "她意識到這個問題。" },
+      { en: "Are you aware of the risks?", zh: "你知道這些風險嗎？" }
     ]
   },
   {
-    word: "cheek",
+    word: "coal",
     type: "noun",
-    meaning: "臉頰；厚臉皮",
+    meaning: "煤",
     examples: [
-      { en: "She kissed him on the cheek.", zh: "她親了他的臉頰一下。" },
-      { en: "He had the cheek to ask for more money.", zh: "他竟厚著臉皮要求更多錢。" }
+      { en: "Coal is used as a fuel.", zh: "煤被用作燃料。" },
+      { en: "The coal mine is deep underground.", zh: "煤礦位於地下深處。" }
     ]
   },
   {
-    word: "dinosaur",
+    word: "downtown",
+    type: "adverb",
+    meaning: "市中心",
+    examples: [
+      { en: "The store is located downtown.", zh: "這家商店位於市中心。" },
+      { en: "Let's go downtown for dinner.", zh: "我們去市中心吃晚餐吧。" }
+    ]
+  },
+  {
+    word: "futhermore",
+    type: "adverb",
+    meaning: "此外",
+    examples: [
+      { en: "Furthermore, we need to consider the budget.", zh: "此外，我們需要考慮預算。" },
+      { en: "She is talented; furthermore, she is hardworking.", zh: "她很有才華；此外，她也很勤奮。" }
+    ]
+  },
+  {
+    word: "instruction",
     type: "noun",
-    meaning: "恐龍",
+    meaning: "指示；教學",
     examples: [
-      { en: "Dinosaurs roamed the Earth millions of years ago.", zh: "數百萬年前，恐龍曾在地球上漫遊。" },
-      { en: "My nephew loves playing with his toy dinosaurs.", zh: "我外甥喜歡玩他的恐龍玩具。" }
+      { en: "Please follow the instructions carefully.", zh: "請仔細遵循指示。" },
+      { en: "The instruction manual is very helpful.", zh: "使用說明書非常有幫助。" }
     ]
   },
   {
-    word: "flashlight",
+    word: "medium",
     type: "noun",
-    meaning: "手電筒",
+    meaning: "媒介；中等",
     examples: [
-      { en: "I used a flashlight to find the keys in the dark.", zh: "我用手電筒在黑暗中找鑰匙。" },
-      { en: "Don’t forget to pack a flashlight for camping.", zh: "別忘了打包手電筒去露營。" }
-    ]
-  },
-  {
-    word: "imbalance",
-    type: "noun",
-    meaning: "不平衡；失衡",
-    examples: [
-      { en: "There is an imbalance between work and life.", zh: "工作與生活之間存在不平衡。" },
-      { en: "The chemical imbalance affected his mood.", zh: "化學失衡影響了他的情緒。" }
-    ]
-  },
-  {
-    word: "luggage",
-    type: "noun",
-    meaning: "行李",
-    examples: [
-      { en: "She packed her luggage for the trip.", zh: "她為旅行打包了行李。" },
-      { en: "You can leave your luggage at the front desk.", zh: "你可以把行李寄放在櫃台。" }
-    ]
-  },
-  {
-    word: "passion",
-    type: "noun",
-    meaning: "熱情；激情",
-    examples: [
-      { en: "He has a passion for music.", zh: "他對音樂充滿熱情。" },
-      { en: "She spoke with great passion.", zh: "她充滿激情地發言。" }
-    ]
-  },
-  {
-    word: "rocky",
-    type: "adjective",
-    meaning: "多岩石的；不穩定的",
-    examples: [
-      { en: "We climbed a rocky mountain trail.", zh: "我們攀登了一條多岩石的山路。" },
-      { en: "Their relationship had a rocky start.", zh: "他們的關係一開始並不順利。" }
-    ]
-  },
-  {
-    word: "straw",
-    type: "noun",
-    meaning: "吸管；稻草",
-    examples: [
-      { en: "He drank his juice through a straw.", zh: "他用吸管喝果汁。" },
-      { en: "The barn was filled with straw.", zh: "穀倉裡堆滿了稻草。" }
-    ]
-  },
-  {
-    word: "trumpet",
-    type: "noun",
-    meaning: "小號；喇叭",
-    examples: [
-      { en: "He played a solo on the trumpet.", zh: "他用小號演奏了一段獨奏。" },
-      { en: "The trumpet sounded loudly across the field.", zh: "喇叭聲響徹整個田野。" }
+      { en: "The medium for this painting is oil.", zh: "這幅畫的媒介是油畫。" },
+      { en: "He is of medium height.", zh: "他身材中等。" }
     ]
   },
   {
     word: "plastic",
-    type: "adj./n.",
-    meaning: "塑膠的；塑膠",
+    type: "noun/adjective",
+    meaning: "塑料；塑膠的",
     examples: [
-      { type:"adj.", en: "This plastic bottle is recyclable.", zh: "這個塑膠瓶可以回收。" },
-      { type:"n.", en: "Why is everything wrapped in plastic?", zh: "為什麼所有東西都包在塑膠裡？" }
-    ]
+      { en: "Plastic is used in many products.", zh: "塑料被用於許多產品中。" },
+      { en: "The plastic bag is not biodegradable.", zh: "塑料袋不可生物降解。" }
+   ]
   }
-];
+]
 
     const wordGrid = document.getElementById("wordGrid");
     const popup = document.getElementById("popup");
