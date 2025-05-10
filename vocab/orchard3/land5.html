@@ -129,129 +129,99 @@
     </a>
   </div>
 
-
-
   <script>
 const words = [
   {
-    word: "aware",
-    meaning: "意識到的",
-    pos: "adj.",
-    sentence: "I'm aware of how ridiculous that sounds.",
-    translation: "我知道那聽起來有多荒謬。",
-  },
-  {
-    word: "coal",
-    meaning: "煤",
-    pos: "n.",
-    sentence: "The train was still powered by coal back then.",
-    translation: "那時火車仍是靠煤來運行的。",
-  },
-  {
-    word: "downtown",
-    meaning: "市中心",
-    pos: "n./adj./adv.",
-    sentence: [
-      {
-        pos: "n.",
-        en: "We parked just outside the downtown.",
-        zh: "我們把車停在市中心外面。",
-      },
-      {
-        pos: "adj.",
-        en: "They live in a downtown apartment.",
-        zh: "他們住在市中心的一間公寓裡。",
-      },
-      {
-        pos: "adv.",
-        en: "We’re heading downtown for dinner.",
-        zh: "我們要去市中心吃晚餐。",
-      }
+    word: "armed",
+    type: "adjective",
+    meaning: "武裝的；攜帶武器的",
+    examples: [
+      { en: "The police were armed with rifles.", zh: "警察配備了步槍。" },
+      { en: "He walked into the building armed and dangerous.", zh: "他攜帶武器走進建築物，十分危險。" }
     ]
   },
   {
-    word: "furthermore",
-    meaning: "此外",
-    pos: "adv.",
-    sentence: "Furthermore, I don’t think she even likes him.",
-    translation: "此外，我覺得她根本不喜歡他。",
-  },
-  {
-    word: "instruction",
-    meaning: "指示；教學",
-    pos: "n.",
-    sentence: "She gave him very clear instructions.",
-    translation: "她給了他非常清楚的指示。",
-  },
-  {
-    word: "medium",
-    meaning: "中等的；媒介",
-    pos: "adj./n.",
-    sentence: [
-      {
-        pos: "adj.",
-        en: "I’ll take a medium coffee, please.",
-        zh: "我要一杯中杯咖啡，謝謝。",
-      },
-      {
-        pos: "n.",
-        en: "TV is a powerful medium for education.",
-        zh: "電視是一種強大的教育媒介。",
-      }
+    word: "cheek",
+    type: "noun",
+    meaning: "臉頰；厚臉皮",
+    examples: [
+      { en: "She kissed him on the cheek.", zh: "她親了他的臉頰一下。" },
+      { en: "He had the cheek to ask for more money.", zh: "他竟厚著臉皮要求更多錢。" }
     ]
   },
   {
-    word: "plastic",
-    meaning: "塑膠的；塑膠",
-    pos: "adj./n.",
-    sentence: [
-      {
-        pos: "adj.",
-        en: "This plastic bottle is recyclable.",
-        zh: "這個塑膠瓶可以回收。",
-      },
-      {
-        pos: "n.",
-        en: "Why is everything wrapped in plastic?",
-        zh: "為什麼所有東西都包在塑膠裡？",
-      }
+    word: "dinosaur",
+    type: "noun",
+    meaning: "恐龍",
+    examples: [
+      { en: "Dinosaurs roamed the Earth millions of years ago.", zh: "數百萬年前，恐龍曾在地球上漫遊。" },
+      { en: "My nephew loves playing with his toy dinosaurs.", zh: "我外甥喜歡玩他的恐龍玩具。" }
     ]
   },
   {
-    word: "security",
-    meaning: "安全；保全",
-    pos: "n.",
-    sentence: "Security wouldn’t let us in without ID.",
-    translation: "沒有證件保全不讓我們進去。",
+    word: "flashlight",
+    type: "noun",
+    meaning: "手電筒",
+    examples: [
+      { en: "I used a flashlight to find the keys in the dark.", zh: "我用手電筒在黑暗中找鑰匙。" },
+      { en: "Don’t forget to pack a flashlight for camping.", zh: "別忘了打包手電筒去露營。" }
+    ]
   },
   {
-    word: "surround",
-    meaning: "包圍；圍繞",
-    pos: "v.",
-    sentence: "They surround themselves with good friends.",
-    translation: "他們讓自己被好朋友圍繞。",
+    word: "imbalance",
+    type: "noun",
+    meaning: "不平衡；失衡",
+    examples: [
+      { en: "There is an imbalance between work and life.", zh: "工作與生活之間存在不平衡。" },
+      { en: "The chemical imbalance affected his mood.", zh: "化學失衡影響了他的情緒。" }
+    ]
   },
   {
-    word: "violet",
-    meaning: "紫羅蘭色；紫羅蘭花",
-    pos: "n./adj.",
-    sentence: [
-      {
-        pos: "adj.",
-        en: "She painted the wall a soft violet.",
-        zh: "她把牆漆成柔和的紫羅蘭色。",
-      },
-      {
-        pos: "n.",
-        en: "She picked a violet from the garden.",
-        zh: "她從花園摘了一朵紫羅蘭。",
-      }
+    word: "luggage",
+    type: "noun",
+    meaning: "行李",
+    examples: [
+      { en: "She packed her luggage for the trip.", zh: "她為旅行打包了行李。" },
+      { en: "You can leave your luggage at the front desk.", zh: "你可以把行李寄放在櫃台。" }
+    ]
+  },
+  {
+    word: "passion",
+    type: "noun",
+    meaning: "熱情；激情",
+    examples: [
+      { en: "He has a passion for music.", zh: "他對音樂充滿熱情。" },
+      { en: "She spoke with great passion.", zh: "她充滿激情地發言。" }
+    ]
+  },
+  {
+    word: "rocky",
+    type: "adjective",
+    meaning: "多岩石的；不穩定的",
+    examples: [
+      { en: "We climbed a rocky mountain trail.", zh: "我們攀登了一條多岩石的山路。" },
+      { en: "Their relationship had a rocky start.", zh: "他們的關係一開始並不順利。" }
+    ]
+  },
+  {
+    word: "straw",
+    type: "noun",
+    meaning: "吸管；稻草",
+    examples: [
+      { en: "He drank his juice through a straw.", zh: "他用吸管喝果汁。" },
+      { en: "The barn was filled with straw.", zh: "穀倉裡堆滿了稻草。" }
+    ]
+  },
+  {
+    word: "trumpet",
+    type: "noun",
+    meaning: "小號；喇叭",
+    examples: [
+      { en: "He played a solo on the trumpet.", zh: "他用小號演奏了一段獨奏。" },
+      { en: "The trumpet sounded loudly across the field.", zh: "喇叭聲響徹整個田野。" }
     ]
   }
 ];
-
-
-
 
     const wordGrid = document.getElementById("wordGrid");
     const popup = document.getElementById("popup");
