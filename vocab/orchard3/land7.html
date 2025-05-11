@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>地塊7</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8e1;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #d35400;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .word-box {
+      background-color: #f6b93b;
+      color: white;
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 20px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .word-box:hover {
+      background-color: #e67e22;
+    }
+    .link {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .game-btn {
+      background-color: #f8c291;
+      color: white;
+      font-size: 1.2rem;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      text-decoration: none; /* 去除連結的底線 */
+    }
+
+    .game-btn:hover {
+      background-color: #e67e22;
+    }
+
+    .game-btn:focus {
+      outline: none; /* 去除聚焦時的邊框 */
+    }
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fffefc;
+  padding: 16px;
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  width: 90vw;
+  max-width: 400px;
+  min-width: 260px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  box-sizing: border-box;       /* 讓 padding 與 border 不撐爆 */
+  overflow-wrap: break-word;    /* 長句斷行 */
+}
+    .popup h2 {
+      margin-top: 0;
+      color: #d35400;
+      font-size: 2rem;
+    }
+    .example {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+      font-size: 1.2rem;
+    }
+    .play-btn {
+      background-color: #f8c291;
+      border: none;
+      padding: 5px 10px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .close-btn {
+      margin-top: 20px;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>地塊7</h1>
+  <div class="grid" id="wordGrid"></div>
+
+  <div class="popup" id="popup">
+    <h2 id="popupWord"></h2>
+    <p id="popupInfo"></p>
+    <div id="popupExamples"></div>
+    <button class="close-btn" onclick="closePopup()">關閉</button>
+  </div>
+  <div class="link">
+    <a href="games/land7games.html">
+      <button class="game-btn">進入中英配對遊戲</button>
+    </a>
+  </div>
+
+  <script>
+const words = [
+  {
+    word: "afterward",
+    type: "adverb",
+    meaning: "在那之後",
+    examples: [
+      { en: "We went to the park, and afterward we had lunch.", zh: "我們去了公園，然後吃了午餐。" },
+      { en: "She studied hard, and afterward she passed the exam.", zh: "她努力學習，然後通過了考試。" }
+    ]
+  },
+  {
+    word: "bull",
+    type: "noun",
+    meaning: "公牛",
+    examples: [
+      { en: "The bull is a strong animal.", zh: "公牛是一種強壯的動物。" },
+      { en: "In the farm, we have a big bull.", zh: "在農場裡，我們有一頭大公牛。" }
+    ]
+  },
+  {
+    word: "daytime",
+    type: "noun",
+    meaning: "白天",
+    examples: [
+      { en: "During the daytime, the sun shines brightly.", zh: "白天，太陽明亮地照耀。" },
+      { en: "I prefer to work during the daytime.", zh: "我更喜歡在白天工作。" }
+    ]
+  },
+  {
+    word: "fair",
+    type: "adjective/noun",
+    meaning: "公平的/集市",
+    examples: [
+      { en: "It's only fair to share the cake.", zh: "分享蛋糕是公平的。" },
+      { en: "The fair was held in the town square.", zh: "集市在市中心舉行。" }
+    ]
+  },
+  {
+    word: "holy",
+    type: "adjective",
+    meaning: "神聖的",
+    examples: [
+      { en: "The holy book is important to many people.", zh: "聖書對許多人來說很重要。" },
+      { en: "They visited the holy site during their trip.", zh: "他們在旅行中參觀了聖地。" }
+    ]
+  },
+  {
+    word: "lifetime",
+    type: "noun",
+    meaning: "一生",
+    examples: [
+      { en: "He has a lifetime of experience in this field.", zh: "他在這個領域有一生的經驗。" },
+      { en: "This is a once-in-a-lifetime opportunity.", zh: "這是一次千載難逢的機會。" }
+    ]
+  },
+  {
+    word: "onto",
+    type: "preposition",
+    meaning: "到...上面",
+    examples: [
+      { en: "The cat jumped onto the table.", zh: "貓跳到了桌子上。" },
+      { en: "She put the book onto the shelf.", zh: "她把書放到了書架上。" }
+    ]
+  },
+  {
+    word: "regional",
+    type: "adjective",
+    meaning: "地區的",
+    examples: [
+      { en: "The regional manager will visit next week.", zh: "地區經理下週將會來訪。" },
+      { en: "They discussed regional issues at the meeting.", zh: "他們在會議上討論了地區問題。" }
+    ]
+  },
+  {
+    word: "regional",
+    type: "adjective",
+    meaning: "地區的",
+    examples: [
+      { en: "The regional manager will visit next week.", zh: "地區經理下週將會來訪。" },
+      { en: "They discussed regional issues at the meeting.", zh: "他們在會議上討論了地區問題。" }
+    ]
+  },
+  {
+    word: "squeeze",
+    type: "verb",
+    meaning: "擠壓",
+    examples: [
+      { en: "She squeezed the lemon to get the juice.", zh: "她擠壓檸檬以獲取果汁。" },
+      { en: "He squeezed through the crowd.", zh: "他擠過人群。" }
+    ]
+  },
+  {
+    word: "ton",
+    type: "noun",
+    meaning: "噸",
+    examples: [
+      { en: "The truck can carry a ton of weight.", zh: "這輛卡車可以承載一噸的重量。" },
+      { en: "He lost a ton of money in the stock market.", zh: "他在股市中損失了一大筆錢。" }
+    ]
+  }
+]
+
+    const wordGrid = document.getElementById("wordGrid");
+    const popup = document.getElementById("popup");
+    const popupWord = document.getElementById("popupWord");
+    const popupInfo = document.getElementById("popupInfo");
+    const popupExamples = document.getElementById("popupExamples");
+
+    words.forEach(item => {
+      const box = document.createElement("div");
+      box.className = "word-box";
+      box.textContent = item.word;
+      box.addEventListener("click", () => {
+        popupWord.textContent = item.word;
+        popupInfo.textContent = `${item.type}：${item.meaning}`;
+        popupExamples.innerHTML = "";
+        item.examples.forEach(ex => {
+          const exDiv = document.createElement("div");
+          exDiv.className = "example";
+          exDiv.innerHTML = `
+            <strong>英文：</strong> ${ex.en}
+            <button class="play-btn">🔈</button><br/>
+            <strong>中文：</strong> ${ex.zh}
+          `;
+          const btn = exDiv.querySelector('.play-btn');
+          btn.addEventListener('click', () => speak(ex.en)); 
+          popupExamples.appendChild(exDiv);
+        });
+        speak(item.word);
+        popup.style.display = "block";
+      });
+      wordGrid.appendChild(box);
+    });
+
+    function closePopup() {
+      popup.style.display = "none";
+    }
+
+    let loadedVoices = [];
+
+    function loadVoices() {
+      loadedVoices = speechSynthesis.getVoices();
+      if (loadedVoices.length === 0) {
+        speechSynthesis.onvoiceschanged = () => {
+          loadedVoices = speechSynthesis.getVoices();
+        };
+      }
+    }
+    loadVoices();
+
+    function speak(text) {
+      if (!text) return;
+
+      const utterance = new SpeechSynthesisUtterance(text);
+
+      const preferredVoice = loadedVoices.find(voice =>
+        voice.name === 'Samantha' || voice.name.includes('Siri') || voice.name.includes('Google US English')
+      ) || loadedVoices.find(voice => voice.lang === 'en-US') || loadedVoices[0];
+
+      if (preferredVoice) {
+        utterance.voice = preferredVoice;
+      }
+
+      utterance.lang = 'en-US';
+
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+</body>
+</html>
